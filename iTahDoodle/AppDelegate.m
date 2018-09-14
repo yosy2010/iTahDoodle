@@ -18,46 +18,47 @@
 // put all the stuff that need to be ready once the app started
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // create and set the UIwindow instance
-    // a CGRect is a struct with and option (x,y) and a size (width,height)
+    
+    // Create and configure the UIWindow instance
+    // A CGRect is a struct with an origin (x,y) and a size (width,height)
     CGRect winFrame = [[UIScreen mainScreen] bounds];
     UIWindow *theWindow = [[UIWindow alloc] initWithFrame:winFrame];
-    [self setWindow:theWindow];
+    self.window = theWindow;
     
-    // define the frame rectangle of the three UI elements
-    // CGRectMake() create a CGRect from (x,y,width,height)
-    CGRect tableFrame = CGRectMake(0, 80, winFrame.size.width, winFrame.size.height - 100);
-    CGRect feildFrame = CGRectMake(20, 40, 200, 31);
-    CGRect buttonFrame = CGRectMake(288, 40, 72, 31);
+    // Define the frame rectangles of the three UI elements
+    // CGRectMake() creates a CGRect from (x, y, width, height)
+    CGRect tableFrame = CGRectMake(0, 80, winFrame.size.width,winFrame.size.height - 100);
+    CGRect fieldFrame = CGRectMake(20, 40, 200, 31);
+    CGRect buttonFrame = CGRectMake(228, 40, 72, 31);
     
-    // create and setup the UITableView instance
+    // Create and configure the UITableView instance
     self.taskTable = [[UITableView alloc] initWithFrame:tableFrame style:UITableViewStylePlain];
     self.taskTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    // tell the tableView which class to init whenever it needs to create a new cell
+    // Tell the table view which class to instantiate whenever it
+    // needs to create a new cell
     [self.taskTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    // create and setup the text feild
-    self.taskFeild = [[UITextField alloc]initWithFrame:feildFrame];
-    self.taskFeild.borderStyle = UITextBorderStyleRoundedRect;
-    self.taskFeild.placeholder = @"type a task, tap insert";
+    // Create and configure the UITextField instance where new tasks will be entered
+    self.taskField = [[UITextField alloc] initWithFrame:fieldFrame];
+    self.taskField.borderStyle = UITextBorderStyleRoundedRect;
+    self.taskField.placeholder = @"Type a task, tap Insert";
     
-    // create and setup th button
+    // Create and configure the UIButton instance
     self.insertButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.insertButton.frame = buttonFrame;
     
-    // give the button a title
-    [self.insertButton setTitle:@"insert" forState:UIControlStateNormal];
+    // Give the button a title
+    [self.insertButton setTitle:@"Insert" forState:UIControlStateNormal];
     
-    // add the three elements to the window
+    // Add our three UI elements to the window
     [self.window addSubview:self.taskTable];
-    [self.window addSubview:self.taskFeild];
+    [self.window addSubview:self.taskField];
     [self.window addSubview:self.insertButton];
-    
-    // finlize the window and put it in the screen
+    // Finalize the window and put it on the screen
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
+
     
     return YES;
 }

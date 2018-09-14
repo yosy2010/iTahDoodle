@@ -13,14 +13,10 @@
 // properties
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic) UITableView *taskTable; // to show the task to be done
-@property (nonatomic) UITextField *taskFeild; // to enter new tasks
-@property (nonatomic) UIButton *insertButton; // to add the task to the table
-
-@property (nonatomic) NSMutableArray *tasks; // array of strings to hold the tasks as strings
-
-// methods
-- (void)addTask: (id) sender; // the method that add the task to the array of strings
-
+@property (nonatomic) UITableView *taskTable;
+@property (nonatomic) UITextField *taskField;
+@property (nonatomic) UIButton *insertButton;
+@property (nonatomic) NSMutableArray *tasks;
+- (void)addTask:(id)sender;
 @end
 
